@@ -1,0 +1,18 @@
+<h1>Flickr: User Image Search</h1>
+
+<%= form_with url: root_path, method: :get do |f| %>
+    <%= f.label :flickr_id, "Search Flickr ID: " %>
+    <%= f.text_field :flickr_id %>
+    <%= f.submit "Search" %>
+<% end %>
+
+<h1>Recent Landscape Photos</h1>
+<ul>
+  <% @photos.each do |photo| %>
+    <li>
+       <%= image_tag Flickr.url_q(photo) %>
+      <p><%= photo.title %></p>
+      <p><%= photo.owner %></p>
+    </li>
+  <% end %>
+</ul>
