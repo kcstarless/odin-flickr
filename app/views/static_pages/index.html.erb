@@ -6,7 +6,15 @@
     <%= f.submit "Search" %>
 <% end %>
 
-<h1>Recent Landscape Photos</h1>
+<% if @error %>
+    <p style="color:red;"><%= @error %></p>
+<% end %>
+
+<% if @author.present? %>
+    <h3>Recent photos of <%= @photos.first.ownername %></h3>
+<% else %>
+    <h3>Random Recent Photos</h3>
+<% end %>
 <ul>
   <% @photos.each do |photo| %>
     <li>
@@ -15,4 +23,6 @@
       <p><%= photo.owner %></p>
     </li>
   <% end %>
+
+
 </ul>

@@ -6,7 +6,8 @@ class StaticPagesController < ApplicationController
 
     begin
       if flickr_id.present?
-        @photos = @flickr.photos.search user_id: flickr_id
+        @photos = @flickr.photos.search(user_id: flickr_id, extras: "owner_name")
+        @author = true
       else
         @photos = @flickr.photos.getRecent
       end
