@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
       end
     rescue Flickr::FailedResponse => e
       @error = "Error with connection to Flickr API: #{e.message}"
-      @photos = []
+      @photos = @flickr.photos.getRecent
     end
   end
 
